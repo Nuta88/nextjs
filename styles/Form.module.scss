@@ -1,0 +1,13 @@
+.inputWrap {
+  min-height: 110px;
+  padding: 10px 0;
+  label {
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.45);
+  }
+  .inputError {
+    color: red;
+    line-height: 10px;
+    font-size: 10px;
+  }
+}

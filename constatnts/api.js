@@ -5,3 +5,7 @@ export const apiUrls = {
   login: '/login',
   planets: '/planets'
 };
+
+export const navigations = [
+  { id: 'planets', title: 'Planets', path: apiUrls.planets }
+];
