@@ -15,6 +15,7 @@ const post = (url, body) => {
     mode: 'no-cors',
     body: JSON.stringify(body)
   };
+
   return fetch(url, requestOptions).then(handleResponse);
 };
 

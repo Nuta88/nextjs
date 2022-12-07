@@ -3,7 +3,7 @@ import { loginService } from '../services';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = ({ children }) => {
+export const Layout = ({ children }) => {
   const { user } = loginService;
 
   return (
@@ -14,5 +14,3 @@ const Layout = ({ children }) => {
     </>
   )
 };
-
-export default Layout;

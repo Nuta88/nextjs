@@ -1,7 +1,30 @@
-import '../styles/globals.css'
+import Head from 'next/head';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+import { Layout, Loading } from '../components';
+import { useAuth, useLoader } from '../hooks';
+import '../styles/globals.scss';
 
-export default MyApp
+const MyApp = ({ Component, pageProps }) => {
+  const { authorized } = useAuth();
+  const { loading } = useLoader();
+
+  if ( loading ) {
+    return <Loading />;
+  }
+
+  return (
+    <Layout>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      {authorized &&
+        <Component {...pageProps} />
+      }
+    </Layout>
+  )
+};
+
+export default MyApp;

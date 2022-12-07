@@ -8,6 +8,7 @@ const userSubject = new BehaviorSubject(process.browser && JSON.parse(localStora
 const url = `/api${apiUrls.login}`;
 
 const login = async ({ name, password }) => {
+  console.log(url);
   return fetchWrapper.post(url, { name, password })
     .then(user => {
       userSubject.next(user);
