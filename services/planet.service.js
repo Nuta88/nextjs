@@ -4,10 +4,13 @@ import { fetchWrapper } from '../api/fetchWrapper';
 import { apiUrls } from '../constatnts/api';
 const { publicRuntimeConfig } = getConfig();
 
-const url = `${publicRuntimeConfig.apiUrl}${apiUrls.planets}`;
+const baseUrl = `${publicRuntimeConfig.apiUrl}${apiUrls.planets}`;
 
-const fetchPlanets = async () => {
-  return fetchWrapper.get(url);
+const fetchPlanets = async ({ queryKey }) => {
+  const { page, search } = queryKey[1];
+  const queryParams = search ? `?page=${page}&search=${search}` : `?page=${page}`;
+
+  return fetchWrapper.get(`${baseUrl}${queryParams}`);
 };
 
 

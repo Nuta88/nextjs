@@ -21,7 +21,11 @@ export const Layout = ({ children }) => {
   return (
     <>
       {user && <Header />}
-      <main>{children}</main>
+      <main>
+        <div className="content">
+          {children}
+        </div>
+      </main>
       {user && <Footer />}
     </>
   )

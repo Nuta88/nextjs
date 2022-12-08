@@ -1,8 +1,11 @@
 import Head from 'next/head';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { Layout, Loading } from '../components';
 import { useAuth, useLoader } from '../hooks';
 import '../styles/globals.scss';
+
+const queryClient = new QueryClient();
 
 const MyApp = ({ Component, pageProps }) => {
   const { authorized } = useAuth();
@@ -20,9 +23,11 @@ const MyApp = ({ Component, pageProps }) => {
           rel="stylesheet"
         />
       </Head>
-      {authorized &&
-        <Component {...pageProps} />
-      }
+      <QueryClientProvider client={queryClient}>
+        {authorized &&
+          <Component {...pageProps} />
+        }
+      </QueryClientProvider>
     </Layout>
   )
 };

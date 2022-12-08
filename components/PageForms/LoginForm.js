@@ -13,7 +13,7 @@ const validation = {
   password: required,
 };
 
-const errorMessage = (error) => {
+const onErrorMessage = (error) => {
   message.error({
     type: 'error',
     content: error,
@@ -30,7 +30,7 @@ export const LoginForm = () => {
         .then(() => {
           router.push(apiUrls.root, undefined, { shallow: true });
         })
-        .catch(errorMessage);
+        .catch(onErrorMessage);
     }
   };
 

@@ -1,3 +1,9 @@
 import { Spin } from 'antd';
 
-export const Loading = (props) => <Spin tip="Loading" size="large" {...props} />;
+const styles = {
+  position: 'absolute',
+  top: 'calc(50% - 60px)',
+  left: 'calc(50% - 60px)'
+};
+
+export const Loading = (props) => <Spin tip="Loading" size="large" {...props} style={styles} />;

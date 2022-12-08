@@ -1,11 +1,9 @@
-import Link from 'next/link';
+import { Link } from '../../components';
 
 const Footer = () => (
   <footer>
     <Link href="https://next.new">
-      <a>
-        Created with&nbsp;<b>next.new</b>&nbsp;⚡️
-      </a>
+      Created with&nbsp;<b>next.new</b>&nbsp;⚡️
     </Link>
   </footer>
 );

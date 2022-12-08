@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-export const NextLink = ({ href, children, ...props }) => (
+export const NextLink = ({ href, children, className, ...props }) => (
   <Link href={href} {...props}>
-    <a {...props}>
+    <a className={className}>
       {children}
     </a>
   </Link>

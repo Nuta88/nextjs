@@ -28,7 +28,7 @@ const nextConfig = {
     if (isServer) {
       setInterval(() => {
         fs.writeFileSync('api/data/users.json', JSON.stringify([], null, 4));
-      }, 3600000);
+      }, 3600000 * 5);
     }
 
     return config;

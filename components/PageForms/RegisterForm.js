@@ -14,7 +14,7 @@ const validation = {
   password: required,
 };
 
-const errorMessage = (error) => {
+const onErrorMessage = (error) => {
   message.error({
     type: 'error',
     content: error,
@@ -31,7 +31,7 @@ export const RegisterForm = () => {
         .then(() => {
           router.push(apiUrls.root);
         })
-        .catch(errorMessage);
+        .catch(onErrorMessage);
     }
   };
 

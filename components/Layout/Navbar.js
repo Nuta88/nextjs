@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { Dropdown, Menu } from 'antd';
+import { Dropdown } from 'antd';
 
 import { Link, CircleButton, AvatarIcon, TextButton } from '../../components';
 
@@ -15,18 +15,12 @@ const Navbar = () => {
     loginService.logout();
   };
 
-  const menu = (
-    <Menu
-      items={[
-        {
-          key: '1',
-          label: (
-            <TextButton onClick={logout}>Logout</TextButton>
-          )
-        }
-      ]}
-    />
-  );
+  const items = [
+    {
+      label: <TextButton onClick={logout}>Logout</TextButton>,
+      key: 'logout'
+    }
+  ];
 
   return (
     <nav className={styles.nav}>
@@ -45,7 +39,7 @@ const Navbar = () => {
             {title}
           </Link>
         ))}
-        <Dropdown overlay={menu}>
+        <Dropdown menu={{ items }}>
           <CircleButton icon={<AvatarIcon />} />
         </Dropdown>
       </div>
