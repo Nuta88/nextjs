@@ -6,9 +6,9 @@ import '../styles/globals.scss';
 
 const MyApp = ({ Component, pageProps }) => {
   const { authorized } = useAuth();
-  const { loading } = useLoader();
+  const { isLoading } = useLoader();
 
-  if ( loading ) {
+  if ( isLoading ) {
     return <Loading />;
   }
 

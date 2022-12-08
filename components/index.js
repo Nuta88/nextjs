@@ -5,6 +5,8 @@ import { Layout } from './Layout';
 import { Card } from './Card';
 import { SecondaryTitle } from './Typography/SecondaryTitle';
 import { SubmitButton } from './Buttons/SubmitButton';
+import { CircleButton } from './Buttons/CircleButton';
+import { TextButton } from './Buttons/TextButton';
 import { AvatarIcon } from './Icons';
 import { OptimizedImage as Image } from './OptimizedImage';
 import { NextLink as Link } from './Link';
@@ -19,5 +21,7 @@ export {
   Link,
   Layout,
   SecondaryTitle,
-  SubmitButton
+  SubmitButton,
+  CircleButton,
+  TextButton
 };

@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { loginService } from '../../services';
-import { apiUrls, publicPaths } from '../../constatnts/api';
+import { apiUrls } from '../../constatnts/api';
+import { isAuthorizedPath } from '../../utils/router';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -10,10 +11,9 @@ import Footer from './Footer';
 export const Layout = ({ children }) => {
   const router = useRouter();
   const { user } = loginService;
-  const path = router.asPath.split('?')[0];
 
   useEffect(() => {
-    if (user && publicPaths.includes(path)) {
+    if (user && isAuthorizedPath(router.asPath)) {
       router.push(apiUrls.root);
     }
   }, []);

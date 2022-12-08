@@ -19,7 +19,7 @@ const login = async ({ email, password }) => {
 const logout = () => {
   localStorage.removeItem('user');
   userSubject.next(null);
-  Router.push(apiUrls.login);
+  Router.push(apiUrls.login, undefined, { shallow: true });
 };
 
 const register = (user) => {

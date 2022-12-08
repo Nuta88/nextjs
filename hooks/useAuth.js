@@ -1,12 +1,23 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from "next/router";
+import { useEffect, useCallback, useState } from 'react';
+import { useRouter } from 'next/router';
+
 import { loginService } from '../services';
-import { publicPaths } from '../constatnts/api';
+import { apiUrls, authorizedPaths } from '../constatnts/api';
+import { isAuthorizedPath } from '../utils/router';
 
 export const useAuth = () => {
   const router = useRouter();
   const [authorized, setAuthorized] = useState(false);
   const { user } = loginService;
+
+  const authCheck = useCallback((url) => {
+    if (!user && !isAuthorizedPath(url)) {
+      setAuthorized(false);
+      router.push({ pathname: apiUrls.login });
+    } else {
+      setAuthorized(true);
+    }
+  }, [setAuthorized, authorizedPaths, isAuthorizedPath, router]);
 
   useEffect(() => {
     authCheck(router.asPath);
@@ -16,7 +27,6 @@ export const useAuth = () => {
     };
 
     router.events.on('routeChangeStart', hideContent);
-
     router.events.on('routeChangeComplete', authCheck)
 
     return () => {
@@ -24,17 +34,6 @@ export const useAuth = () => {
       router.events.off('routeChangeComplete', authCheck);
     }
   }, [router, authCheck, user]);
-
-  function authCheck(url) {
-    const path = url.split('?')[0];
-
-    if (!user && !publicPaths.includes(path)) {
-      setAuthorized(false);
-      router.push({ pathname: '/login' });
-    } else {
-      setAuthorized(true);
-    }
-  }
 
   return {
     authorized

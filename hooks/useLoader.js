@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 export const useLoader = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const showLoader = () => {
-      setLoading(true);
+      setIsLoading(true);
     };
     const hideLoader = () => {
-      setLoading(false);
+      setIsLoading(false);
     };
 
     router.events.on('routeChangeStart', showLoader);
@@ -22,10 +22,10 @@ export const useLoader = () => {
       router.events.off('routeChangeComplete', hideLoader);
       router.events.off('routeChangeError', hideLoader);
     }
-  }, [router, loading]);
+  }, [router, isLoading]);
 
 
   return {
-    loading
+    isLoading
   }
 };

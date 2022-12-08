@@ -1,4 +1,4 @@
-export const publicPaths = ['/login', '/register'];
+export const authorizedPaths = ['/login', '/register'];
 
 export const apiUrls = {
   root: '/',

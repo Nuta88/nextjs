@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { Button } from 'antd';
+import { Dropdown, Menu } from 'antd';
+
+import { Link, CircleButton, AvatarIcon, TextButton } from '../../components';
 
 import { loginService } from '../../services';
-import { navigations } from '../../constatnts/api';
+import { apiUrls, navigations } from '../../constatnts/api';
 import styles from '../../styles/Navbar.module.scss';
-
-import { Link } from '../index';
 
 const Navbar = () => {
   const { pathname } = useRouter();
@@ -15,10 +15,23 @@ const Navbar = () => {
     loginService.logout();
   };
 
+  const menu = (
+    <Menu
+      items={[
+        {
+          key: '1',
+          label: (
+            <TextButton onClick={logout}>Logout</TextButton>
+          )
+        }
+      ]}
+    />
+  );
+
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-        <Link href="/pages">
+        <Link href={apiUrls.root}>
           <Image src="/logo.png" width={60} height={20} alt="next.js" />
         </Link>
       </div>
@@ -32,7 +45,9 @@ const Navbar = () => {
             {title}
           </Link>
         ))}
-        <Button ghost onClick={logout}>Logout</Button>
+        <Dropdown overlay={menu}>
+          <CircleButton icon={<AvatarIcon />} />
+        </Dropdown>
       </div>
     </nav>
   );
