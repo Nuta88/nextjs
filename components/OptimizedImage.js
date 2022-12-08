@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 export const OptimizedImage = ({src, alt, width=500, height=500}) => (
   <Image

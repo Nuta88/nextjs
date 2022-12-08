@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { Button } from 'antd';
 
-import { loginService } from '../services';
-import { navigations } from '../constatnts/api';
-import styles from '../styles/Navbar.module.scss';
+import { loginService } from '../../services';
+import { navigations } from '../../constatnts/api';
+import styles from '../../styles/Navbar.module.scss';
 
-import { Link, Image } from '../components';
+import { Link } from '../index';
 
 const Navbar = () => {
   const { pathname } = useRouter();
@@ -17,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-        <Link href="/">
+        <Link href="/pages">
           <Image src="/logo.png" width={60} height={20} alt="next.js" />
         </Link>
       </div>
