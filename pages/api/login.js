@@ -1,9 +1,9 @@
-import { getAllUsers } from "../../api";
+import { getAllUsers } from '../../api';
 
 export default function login(req, res) {
-  const { name, password } = JSON.parse(req.body);
+  const { email, password } = JSON.parse(req.body);
   const users = getAllUsers();
-  const user = users.find(user => (user.name === name || user.email === name));
+  const user = users.find(user => user.email === email);
 
   if ( !user || user.password !== password ) {
     res.status(400).json({ message: 'Invalid name or password' });

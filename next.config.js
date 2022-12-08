@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const nextConfig = {
   reactStrictMode: true,
   publicRuntimeConfig: {
@@ -21,6 +23,15 @@ const nextConfig = {
         destination: 'https://swapi.dev/api/:path*'
       }
     ]
+  },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      setInterval(() => {
+        fs.writeFileSync('api/data/users.json', JSON.stringify([], null, 4));
+      }, 600000);
+    }
+
+    return config;
   }
 }
 

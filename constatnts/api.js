@@ -1,8 +1,9 @@
-export const publicPaths = ['/login'];
+export const publicPaths = ['/login', '/register'];
 
 export const apiUrls = {
   root: '/',
   login: '/login',
+  register: '/register',
   planets: '/planets'
 };
 
