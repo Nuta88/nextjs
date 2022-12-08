@@ -5,7 +5,7 @@ import { apiUrls } from '../constatnts/api';
 import styles from '../styles/Login.module.scss';
 
 const Login = () => (
-  <div className={styles.main}>
+  <div data-testid="login-page" className={styles.main}>
     <div className={styles.header}>
       <Image src="/logo.png" width={70} height={30} alt="next.js" />
     </div>
@@ -14,7 +14,11 @@ const Login = () => (
     </div>
     <Card>
       <LoginForm />
-      <Link href={apiUrls.register} className={styles.link}>Register now</Link>
+      <Link
+        href={apiUrls.register}
+        className={styles.link}>
+        Register now
+      </Link>
     </Card>
   </div>
 );

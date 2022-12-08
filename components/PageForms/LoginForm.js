@@ -39,8 +39,10 @@ export const LoginForm = () => {
       onSubmit={handleSubmit}
       customErrorProp="error"
       validation={validation}
+      data-testid="login-form"
     >
       <TextInput
+        data-testid="login-input-email"
         name="email"
         label="Your email"
         size="large"
@@ -48,12 +50,13 @@ export const LoginForm = () => {
         prefix={<AvatarIcon />}
       />
       <PasswordInput
+        data-testid="login-input-password"
         name="password"
         label="Your password"
         size="large"
         placeholder="input password"
       />
-      <SubmitButton type="primary" size="large" block>
+      <SubmitButton data-testid="login-save-btn" type="primary" size="large" block>
         Sign in
       </SubmitButton>
     </Form>

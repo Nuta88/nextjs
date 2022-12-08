@@ -4,7 +4,7 @@ import { apiUrls } from '../constatnts/api';
 import styles from '../styles/Login.module.scss';
 
 const Register = () => (
-  <div className={styles.main}>
+  <div data-testid="register-page" className={styles.main}>
     <div className={styles.header}>
       <Image src="/logo.png" width={70} height={30} alt="next.js" />
     </div>
